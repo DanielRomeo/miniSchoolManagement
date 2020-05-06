@@ -1,0 +1,22 @@
+/*.mainButtons{
+	width: 100%;
+	height: 200px;
+	text-decoration: none;
+	background: yellow;
+	color: white;
+
+}
+
+.mainButtons > #link{
+	text-decoration: none;
+	color: white;	
+}
+
+.mainButtons a{
+	text-decoration: none;
+	color: white;	
+}
+
+a{
+	color: white;
+}*/
