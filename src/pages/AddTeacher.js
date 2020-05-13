@@ -1,14 +1,19 @@
 import React, {useState, useEffect} from 'react';
+import UserForm from './components/AddTeacherComponent'
+import Navbar from './components/navbar'
 
 
-const About = ()=>{
+const AddTeacher = () =>{
 
 
     return(
-     <div>About</div>
+     <div>
+     	<Navbar></Navbar>
+     	<UserForm></UserForm>
+     </div>
     )
 }
 
 
-export default About;
+export default AddTeacher;
 

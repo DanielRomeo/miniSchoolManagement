@@ -3,23 +3,8 @@ import { Link } from 'react-router-dom';
 import '../css/Home.css';
 
 
-// import {Component} from 'react';
-// import PropTypes from 'prop-types';
-// import logo from './logo.svg';
-// import './css/App.css';
-// import {Body, Body2} from './components/Body.js';
-// import {Header, Header2} from './components/Header.js';
-// import { Counter } from './components/counter';
-// import {Title} from './components/Title.js';
-// import Button from 'react-bootstrap/Button';
-// import {Newivyrest, NewivyrestAllData} from './components/newivyrest.js';
+
 import Navbar from '../components/layouts/navbar.js';
-// import HookCounter4 from './components/hooks/hookcounter4.js';
-// import {HookUseEffect, HookMouse} from './components/hooks/useEffect.js';
-// import {IntervalCounter} from './components/hooks/intervalCounter.js';
-// import ComponentC from './components/hooks/useContext.js';
-// import CounterOne from './components/hooks/reducer.js';
-// import {ComponentA, ComponentB, ComponentC} from './components/hooks/reducerContext';
 
 
 const Home = ()=>{
