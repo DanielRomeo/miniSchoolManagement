@@ -152,7 +152,8 @@ function Confirm( {values, nextStep, prevStep} ){
 			"firstname": values.firstName ,
 			"lastname" : values.lastName,
 			"module": values.module,
-			"studentnumber": values.studentNumber
+			"studentnumber": values.studentNumber,
+			"active": true
 		};
 			const url = "http://localhost:5000/students" 
 			fetch(url, {
