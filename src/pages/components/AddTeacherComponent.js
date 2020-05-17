@@ -1,6 +1,7 @@
 import React, { Component, useEffect} from 'react';
 import { Link } from 'react-router-dom'
-
+import M from 'materialize-css/dist/js/materialize.min.js'
+console.log(M);
 
 class FormUserDetails extends React.Component{
 	 
@@ -18,11 +19,11 @@ class FormUserDetails extends React.Component{
 				<div className="container">
 					<br />
 
-					<div class="row">
-					    <div class="col s12 m12">
-					      <div class="card blue-grey darken-1">
-					        <div class="card-content white-text">
-					          <span class="card-title">Add Students First and Last name</span>
+					<div className="row">
+					    <div className="col s12 m12">
+					      <div className="card blue-grey darken-1">
+					        <div className="card-content white-text">
+					          <span className="card-title">Add Teachers First and Last name</span>
 					          
 					        </div>
 					       
@@ -32,25 +33,25 @@ class FormUserDetails extends React.Component{
 
 					<br />
 
-					<div class="row">
-					    <form class="col s12">
-					      <div class="row">
+					<div className="row">
+					    <form className="col s12">
+					      <div className="row">
 					        
-					        <div class="input-field col s6">
+					        <div className="input-field col s6">
 					          
 					          <input onChange={handleChange('firstName')} 
 					          id="firstname" 
-					          type="text" class="validate"
+					          type="text" className="validate"
 					          value={values.firstName}
 					          />
 					          <label for="firstname">First Name</label>
 					        </div>
 					        
-					        <div class="input-field col s6">
+					        <div className="input-field col s6">
 
 					          <input onChange={handleChange('lastName')}
 					           	id="lastname" type="text" 
-					           	class="validate"
+					           	className="validate"
 					           	value={values.lastName}
 					           	/>
 
@@ -71,6 +72,16 @@ class FormUserDetails extends React.Component{
 // 
 
 class PersonalFormDetails extends React.Component{
+
+	
+	componentDidMount(){
+		document.addEventListener('DOMContentLoaded', function() {
+		    var elems = document.querySelectorAll('select');
+		    var instances = M.FormSelect.init(elems, {});
+		  });
+	}
+
+
 	 continue = e => {
 	 	e.preventDefault();
 	 	this.props.nextStep();
@@ -81,6 +92,8 @@ class PersonalFormDetails extends React.Component{
 	 	this.props.prevStep()
 	 }
 
+	 
+
 
 	render(){
 		const {values, handleChange} = this.props;
@@ -90,12 +103,12 @@ class PersonalFormDetails extends React.Component{
 				<div className="container">
 					<br />
 
-					<div class="row">
-					    <div class="col s12 m12">
-					      <div class="card blue-grey darken-1">
-					        <div class="card-content white-text">
+					<div className="row">
+					    <div className="col s12 m12">
+					      <div className="card blue-grey darken-1">
+					        <div className="card-content white-text">
 					        	<p>Almost Done...</p>
-					          	<span class="card-title">Add Students Module and Student Number</span>
+					          	<span className="card-title">Add Teacher's Module and Module Code</span>
 					        </div>
 					       
 					      </div>
@@ -104,16 +117,17 @@ class PersonalFormDetails extends React.Component{
 
 					<br />
 
-					<div class="row">
-					    <form class="col s12">
-					      <div class="row">
-					        <div class="input-field col s6">
+					<div className="row">
+					    <form className="col s12">
+					      <div className="row">
+					        <div className="input-field col s6">
 					          <input onChange={handleChange('module')} value={values.module} placeholder="Module" id="module" type="text" class="validate"/>
 					          <label for="module">Module</label>
 					        </div>
-					        <div class="input-field col s6">
-					          <input onChange={handleChange('studentNumber')} value={values.studentNumber} placeholder="Student number" id="studentNumber" type="number" class="validate"/>
-					          <label for="studentNumber">Student Number</label>
+					        <div className="input-field col s6">
+					          
+					          <input onChange={handleChange('available')} value={values.available} placeholder="true/false?" id="available" type="text" class="validate"></input>	
+					          <label htmlFor="available">Availabilty</label>
 					        </div>
 					      </div>
 					    </form>
@@ -152,9 +166,9 @@ function Confirm( {values, nextStep, prevStep} ){
 			"firstname": values.firstName ,
 			"lastname" : values.lastName,
 			"module": values.module,
-			"studentnumber": values.studentNumber
+			"available": values.available
 		};
-			const url = "http://localhost:5000/students" 
+			const url = "http://localhost:5000/teachers" 
 			fetch(url, {
 			  method: 'POST', 
 			  headers: {
@@ -202,11 +216,11 @@ function Confirm( {values, nextStep, prevStep} ){
 			<div className="container">
 				<br />
 
-				<div class="row">
-				    <div class="col s12 m12">
-				      <div style={{minHeight: "200px"}} class="card blue-grey darken-1">
-				        <div class="card-content white-text">
-				          <span class="card-title">Confirm User Details</span>
+				<div className="row">
+				    <div className="col s12 m12">
+				      <div style={{minHeight: "200px"}} className="card blue-grey darken-1">
+				        <div className="card-content white-text">
+				          <span className="card-title">Confirm User Details</span>
 				          
 				          <div className="col m6">
 				          	 <p style={dataText} className="orange-text"> First Name : {values.firstName}</p>
@@ -214,11 +228,13 @@ function Confirm( {values, nextStep, prevStep} ){
 				          <div className="col m6">
 				          	 <p style={dataText} className="orange-text">Last Name : {values.lastName}</p>
 				          </div>
-				         <div className="col m6">
-				          <p style={dataText} className="orange-text">Student Number : {values.studentNumber}</p>
-				          </div>
+				         
 				         	<div className="col m6">
 				          	 <p style={dataText} className="orange-text">Module Code : {values.module}</p>
+				          </div>
+
+				          <div className="col m6">
+				          <p style={dataText} className="orange-text"> Availabilty : {values.available}</p>
 				          </div>
 				         
 
@@ -260,9 +276,9 @@ class Success extends React.Component{
 				<div className="container">
 					<br />
 
-					<div class="row">
-					    <div class="col s12 m12">
-					      <h3>Well done, You have successfully added a Student.</h3>
+					<div className="row">
+					    <div className="col s12 m12">
+					      <h3>Well done, You have successfully added a Teacher.</h3>
 					    	
 					  	
 							<Link to='/'>
@@ -286,7 +302,7 @@ class UserForm extends Component{
 		firstName: "",
 		lastName: "",
 		module: "",
-		studentNumber: ""
+		available: ""
 	}
 
 	//proceed to next step:
@@ -313,8 +329,8 @@ class UserForm extends Component{
 	render(){
 
 		const {step } = this.state;
-		const {firstName, lastName, module, studentNumber } = this.state;
-		const values = {firstName, lastName, module, studentNumber };
+		const {firstName, lastName, module, available } = this.state;
+		const values = {firstName, lastName, module, available };
 
 
 		switch(step){

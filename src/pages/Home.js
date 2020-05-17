@@ -59,7 +59,7 @@ const Home = ()=>{
 					</div>
 
 					<div className="col m6 s12 l6">
-						<Link style={linkToMainButtonStyles} id="link" href="" className="valign-wrapper">
+						<Link style={linkToMainButtonStyles} to='./AddTeacher' className="valign-wrapper">
 							<button style={mainButtonStyles} className="btn indigo lighten-1">Add A Teacher</button>	
 						</Link>  	
 					</div>

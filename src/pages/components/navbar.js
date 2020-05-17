@@ -27,7 +27,7 @@ function Navbar(){
             <nav style={navbarstyles}>
               <div className="container">
                 <div class="nav-wrapper">
-                  <h4 href="#" class="brand-logo">Add Student...</h4>
+                  <h4 href="#" class="brand-logo">Add...</h4>
                   <ul id="nav-mobile" class="right hide-on-med-and-down">
                     {/*li's*/}
                   </ul>
