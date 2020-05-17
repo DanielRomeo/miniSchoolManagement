@@ -26,9 +26,27 @@ const Home = ()=>{
 		"textDecoration": "none"
 	}
 
+	const studentCardStyles = {
+		"backgroundColor" : "#f0f0f0",
+		"color": "#fc5185" ,
+
+		"tags": {
+			"color": "#fc5185"
+		}
+	}
+
+	const teacherCardStyles = {
+		"backgroundColor" : "#0e153a",
+
+		"tags": {
+			"color": "#22d1ee"
+		}
+	}	
+
 	/* get students from api and display:*/
 	useEffect( ()=>{
 		getStudentData(); 
+		getTeachersData();
 	}
 	, []);
 
@@ -39,6 +57,14 @@ const Home = ()=>{
 		const data = await response.json();
 		// console.log(data.data);
 		setStudents(data);
+	}
+
+	var getTeachersData = async() =>{
+		const url = "http://localhost:5000/teachers";
+		const response = await fetch(url);
+		const data = await response.json();
+		// console.log(data.data);
+		setTeachers(data);
 	}
 
 
@@ -76,20 +102,19 @@ const Home = ()=>{
 							// everytime we map through each person, send a request to random api and get an image:
 
 
-		                    <div key={person.id} className="col s12 m7">
-		                      <div className="card">
-		                        <div className="card-image">
-		                          <img ></img>
-		                          <span className="card-title"></span>
-		                        </div>
-		                        <div className="card-content">
-		                          <p>{person.firstname}</p>
-		                          <p>{person.lastname}</p>
-		                        </div>
-		                        <div className="card-action">
-		                          <a href="#">{person.studentnumber}</a>
-		                        </div>
-		                      </div>
+		                    <div key={person.id} className="col s12 m6">
+							      <div style={studentCardStyles} class="card ">
+							        <div style={studentCardStyles.tags} class="card-content ">
+							          <span class="card-title">student#{person.id}</span>
+							          <p>{person.firstname}</p>
+							          <p>{person.lastname}</p>
+							          <p>{person.module}</p>
+							          <hr />
+							          <p>Active: {person.active === 1 ? 'TRUE' : 'FALSE'}</p>
+							        </div>
+							       
+							      </div>
+							    
 		                    </div>
 		                ))
 					}
@@ -99,6 +124,29 @@ const Home = ()=>{
 
 
 				{/*import teachers here*/}
+				<div className="row">
+					{
+						teachers.map( person => (
+
+							// everytime we map through each person, send a request to random api and get an image:
+
+
+		                    <div key={person.id} className="col s12 m6">
+							      <div style={teacherCardStyles} class="card ">
+							        <div style={teacherCardStyles.tags} class="card-content ">
+							          <span class="card-title">teacher#{person.id}</span>
+							          <p>{person.firstname}</p>
+							          <p>{person.lastname}</p>
+							          <p>{person.module}</p>
+							        </div>
+							       
+							      </div>
+							    
+		                    </div>
+		                ))
+					}
+				</div>
+
 
 				{/*import students here*/}
 	      </div>
